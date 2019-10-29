@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import {
   hands,
@@ -10,8 +10,51 @@ import {
 import { VisualizerGrid } from './VisualizerGrid';
 import { VisualizerToolbar } from './VisualizerToolbar';
 
+/****** UTILS *****/
+const setQueryStringWithoutPageReload = (queryString) => {
+  const { protocol, host, pathname } = window.location;
+  const newUrl = `${protocol}//${host}${pathname}?${queryString}`;
+  window.history.pushState({ path: newUrl }, '', newUrl);
+};
+
+const getQueryStringValue = (key, searchParams) => searchParams.getAll(key);
+
+const createHandStatusMap = (hands, status) => {
+  if (!hands) {
+    return {};
+  }
+  return hands.reduce((obj, pair) => {
+    obj[pair] = status;
+    return obj;
+  }, {});
+};
+
+/***** COMPONENT *****/
 export const DataManager = () => {
-  const [handStatusMap, setHandStatusMap] = useState(defaultHandStatusMap);
+  const searchParams = new URLSearchParams(window.location.search);
+  const yesHands = getQueryStringValue('yes', searchParams);
+  const maybeHands = getQueryStringValue('maybe', searchParams);
+
+  const [handStatusMap, setHandStatusMap] = useState({
+    ...defaultHandStatusMap,
+    ...createHandStatusMap(yesHands, 'YES'),
+    ...createHandStatusMap(maybeHands, 'MAYBE'),
+  });
+
+  useEffect(() => {
+    searchParams.delete('yes');
+    searchParams.delete('maybe');
+    Object.entries(handStatusMap).forEach((hand) => {
+      const [label, status] = hand;
+      if (status === 'YES') {
+        searchParams.append('yes', label);
+      } else if (status === 'MAYBE') {
+        searchParams.append('maybe', label);
+      }
+    });
+
+    setQueryStringWithoutPageReload(searchParams.toString());
+  }, [handStatusMap, searchParams]);
 
   const handleStatusChange = (hand) => {
     const currStatus = handStatusMap[hand];
@@ -27,50 +70,33 @@ export const DataManager = () => {
   const handleSelectAllPairs = () => {
     setHandStatusMap({
       ...handStatusMap,
-      ...pairs.reduce((obj, pair) => {
-        obj[pair] = 'YES';
-        return obj;
-      }, {}),
+      ...createHandStatusMap(pairs, 'YES'),
     });
   };
 
   const handleSelectAllBroadway = () => {
     setHandStatusMap({
       ...handStatusMap,
-      ...broadway.reduce((obj, pair) => {
-        obj[pair] = 'YES';
-        return obj;
-      }, {}),
+      ...createHandStatusMap(broadway, 'YES'),
     });
   };
 
   const handleSelectAllSuitedConnectors = () => {
     setHandStatusMap({
       ...handStatusMap,
-      ...suitedConnectors.reduce((obj, suitedConnector) => {
-        obj[suitedConnector] = 'YES';
-        return obj;
-      }, {}),
+      ...createHandStatusMap(suitedConnectors, 'YES'),
     });
   };
 
   const handleSelectAllSuitedAx = () => {
     setHandStatusMap({
       ...handStatusMap,
-      ...hands[0].reduce((obj, suitedConnector) => {
-        obj[suitedConnector] = 'YES';
-        return obj;
-      }, {}),
+      ...createHandStatusMap(hands[0], 'YES'),
     });
   };
 
   const handleSelectAllHands = () => {
-    setHandStatusMap(
-      hands.flat().reduce((obj, hand) => {
-        obj[hand] = 'YES';
-        return obj;
-      }, {})
-    );
+    setHandStatusMap(createHandStatusMap(hands.flat(), 'YES'));
   };
 
   return (

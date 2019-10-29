@@ -34,6 +34,7 @@ export const VisualizerGrid = ({
         label={hand}
         status={handStatusMap[hand]}
         handleStatusChange={handleStatusChange}
+        key={hand}
       />
     ))}
   </Section>
