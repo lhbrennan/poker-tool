@@ -9,6 +9,7 @@ import {
 } from '../constants/hands';
 import { VisualizerGrid } from './VisualizerGrid';
 import { VisualizerToolbar } from './VisualizerToolbar';
+import { VisualizerInfobar } from './VisualizerInfobar';
 
 /****** UTILS *****/
 const setQueryStringWithoutPageReload = (queryString) => {
@@ -99,6 +100,10 @@ export const DataManager = () => {
     setHandStatusMap(createHandStatusMap(hands.flat(), 'YES'));
   };
 
+  const handleResetAllHands = () => {
+    setHandStatusMap(defaultHandStatusMap);
+  };
+
   return (
     <section>
       <VisualizerGrid
@@ -112,7 +117,9 @@ export const DataManager = () => {
         selectAllSuitedConnectors={handleSelectAllSuitedConnectors}
         selectAllSuitedAx={handleSelectAllSuitedAx}
         selectAllHands={handleSelectAllHands}
+        resetAllHands={handleResetAllHands}
       />
+      <VisualizerInfobar handStatusMap={handStatusMap} />
     </section>
   );
 };
