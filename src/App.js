@@ -1,7 +1,8 @@
 import React from 'react';
 import { Client as Styletron } from 'styletron-engine-atomic';
 import { Provider as StyletronProvider } from 'styletron-react';
-import { LightTheme, BaseProvider } from 'baseui';
+import { DarkTheme, BaseProvider } from 'baseui';
+// import { customTheme } from './theme';
 
 import { DataManager } from './components/DataManager';
 
@@ -11,8 +12,7 @@ function App() {
   return (
     <div className="App">
       <StyletronProvider value={engine}>
-        <BaseProvider theme={LightTheme}>
-          {/* <header className="App-header">This is the Header</header> */}
+        <BaseProvider theme={DarkTheme}>
           <DataManager />
         </BaseProvider>
       </StyletronProvider>
