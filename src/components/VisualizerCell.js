@@ -9,6 +9,7 @@ export const VisualizerCell = ({ label, status, handleStatusChange }) => (
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
+
       border: '1px solid white',
       padding: '2px',
       borderRadius: '8px',
@@ -17,7 +18,7 @@ export const VisualizerCell = ({ label, status, handleStatusChange }) => (
           ? LightTheme.colors.accent
           : status === 'NO'
           ? LightTheme.colors.mono500
-          : LightTheme.colors.accent100,
+          : LightTheme.colors.accent200,
     }}
   >
     {label}

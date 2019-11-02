@@ -10,6 +10,7 @@ import {
 import { VisualizerGrid } from './VisualizerGrid';
 import { VisualizerToolbar } from './VisualizerToolbar';
 import { VisualizerInfobar } from './VisualizerInfobar';
+import { Header } from './Header';
 
 /****** UTILS *****/
 const setQueryStringWithoutPageReload = (queryString) => {
@@ -105,7 +106,8 @@ export const DataManager = () => {
   };
 
   return (
-    <section>
+    <section style={{ height: '100%' }}>
+      <Header />
       <VisualizerGrid
         hands={hands}
         handStatusMap={handStatusMap}

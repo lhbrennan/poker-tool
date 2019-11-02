@@ -4,8 +4,10 @@ import { styled } from 'styletron-react';
 
 const Section = styled('section', {
   display: 'flex',
+  flexFlow: 'row wrap',
   justifyContent: 'space-between',
-  width: '700px',
+  maxWidth: '700px',
+  margin: '0px auto 20px auto',
 });
 
 export const VisualizerToolbar = ({

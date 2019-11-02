@@ -3,15 +3,21 @@ import { styled } from 'styletron-react';
 
 const totalPossibleCombos = 1326;
 
-const round_to_precision = (x, precision) => {
-  const y = +x + (precision === undefined ? 0.5 : precision / 2);
-  return y - (y % (precision === undefined ? 1 : +precision));
+/**
+ * @param {number} num
+ * @param {number} precision
+ */
+const roundToPrecision = (num, precision) => {
+  const adjuster = 1 / precision;
+  return Math.round(num * adjuster) / adjuster;
 };
 
 const Section = styled('section', {
   display: 'flex',
+  flexFlow: 'row wrap',
   justifyContent: 'space-between',
-  width: '700px',
+  maxWidth: '700px',
+  margin: '0 auto',
 });
 
 const calcNumHandCombos = (hand) => {
@@ -44,16 +50,20 @@ const calcTotalNumSelectionCombos = (handStatusMap) =>
 export const VisualizerInfobar = ({ handStatusMap }) => {
   const [yesCombos, maybeCombos] = calcTotalNumSelectionCombos(handStatusMap);
 
+  const yesComboPercent = roundToPrecision(
+    (yesCombos / totalPossibleCombos) * 100,
+    0.01
+  );
+
+  const maybeComboPercent = roundToPrecision(
+    (maybeCombos / totalPossibleCombos) * 100,
+    0.01
+  );
+
   return (
     <Section>
-      <div>{`'Yes' combos: ${yesCombos} : ${round_to_precision(
-        (yesCombos / totalPossibleCombos) * 100,
-        0.01
-      )}%`}</div>
-      <div>{`'Maybe' combos: ${maybeCombos} : ${round_to_precision(
-        (maybeCombos / totalPossibleCombos) * 100,
-        0.01
-      )}%`}</div>
+      <div>{`'Yes' combos: ${yesCombos}/${totalPossibleCombos} (${yesComboPercent}%)`}</div>
+      <div>{`'Maybe' combos: ${maybeCombos}/${totalPossibleCombos} (${maybeComboPercent}%)`}</div>
     </Section>
   );
 };

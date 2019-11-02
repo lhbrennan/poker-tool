@@ -2,25 +2,37 @@ import React from 'react';
 import { styled } from 'styletron-react';
 
 import { VisualizerCell } from './VisualizerCell';
-import { LightTheme } from 'baseui';
 
-const Section = styled('section', {
+const Outer = styled('section', {
+  maxWidth: '700px',
+  margin: '0px auto 20px auto',
+});
+
+const Middle = styled('div', {
+  paddingTop: '100%',
+  overflow: 'hidden',
+  position: 'relative',
+  maxHeight: '700px',
+  maxWidth: '700px',
+});
+
+const Inner = styled('div', {
+  maxHeight: '700px',
+  maxWidth: '700px',
   display: 'grid',
-  gridTemplateColumns: 'repeat(13, 1fr)',
-  gridTemplateRow: 'repeat(13, 1fr)',
+  gridTemplateColumns: 'repeat(13, minmax(30px, 1fr))',
+  gridTemplateRows: 'repeat(13, minmax(30px, 1fr))',
+
   gridColumnGap: '4px',
   gridRowGap: '4px',
-  backgroundColor: LightTheme.colors.mono300,
-  padding: '6px',
-  borderRadius: '8px',
-  marginBottom: '20px',
 
-  width: '700px',
-  height: '700px',
-  // maxWidth: '800px',
-  // height: 0,
-  // width: '100%',
-  // paddingBottom: '100%',
+  borderRadius: '8px',
+
+  position: 'absolute',
+  top: 0,
+  left: 0,
+  width: '100%',
+  height: '100%',
 });
 
 export const VisualizerGrid = ({
@@ -28,14 +40,18 @@ export const VisualizerGrid = ({
   handStatusMap,
   handleStatusChange,
 }) => (
-  <Section>
-    {hands.flat().map((hand) => (
-      <VisualizerCell
-        label={hand}
-        status={handStatusMap[hand]}
-        handleStatusChange={handleStatusChange}
-        key={hand}
-      />
-    ))}
-  </Section>
+  <Outer>
+    <Middle>
+      <Inner>
+        {hands.flat().map((hand) => (
+          <VisualizerCell
+            label={hand}
+            status={handStatusMap[hand]}
+            handleStatusChange={handleStatusChange}
+            key={hand}
+          />
+        ))}
+      </Inner>
+    </Middle>
+  </Outer>
 );
