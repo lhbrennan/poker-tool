@@ -54,7 +54,7 @@ const RangeSlider = ({ setRange }) => {
           kind={KIND.minimal}
           onClick={() => setRange(calcSliderRange(...value, sixMaxRankings))}
         >
-          Set Range
+          Add Selected Range
         </Button>
       </div>
     </Section>
