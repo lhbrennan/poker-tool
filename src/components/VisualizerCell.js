@@ -17,7 +17,7 @@ export const VisualizerCell = ({ label, status, handleStatusChange }) => (
         status === 'YES'
           ? LightTheme.colors.accent
           : status === 'NO'
-          ? LightTheme.colors.mono500
+          ? LightTheme.colors.mono400
           : LightTheme.colors.accent200,
     }}
   >

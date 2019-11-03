@@ -4,11 +4,16 @@ import { LightTheme } from 'baseui';
 const Header = (props: PropsT) => (
   <section
     style={{
-      height: '30px',
-      marginBottom: '20px',
-      backgroundColor: LightTheme.colors.mono500,
+      display: 'flex',
+      justifyContent: 'center',
+      height: '24px',
+      marginBottom: '10px',
+      backgroundColor: LightTheme.colors.primary,
+      color: LightTheme.colors.mono100,
     }}
-  ></section>
+  >
+    Poker Hand Range Equity Calculator
+  </section>
 );
 
 export { Header };

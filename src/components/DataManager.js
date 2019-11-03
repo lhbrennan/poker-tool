@@ -11,6 +11,7 @@ import { VisualizerGrid } from './VisualizerGrid';
 import { VisualizerToolbar } from './VisualizerToolbar';
 import { VisualizerInfobar } from './VisualizerInfobar';
 import { Header } from './Header';
+import { RangeSlider } from './RangeSlider';
 
 /****** UTILS *****/
 const setQueryStringWithoutPageReload = (queryString) => {
@@ -105,6 +106,13 @@ export const DataManager = () => {
     setHandStatusMap(defaultHandStatusMap);
   };
 
+  const handleSetRange = (range) => {
+    setHandStatusMap({
+      ...handStatusMap,
+      ...createHandStatusMap(range, 'YES'),
+    });
+  }
+
   return (
     <section style={{ height: '100%' }}>
       <Header />
@@ -113,6 +121,7 @@ export const DataManager = () => {
         handStatusMap={handStatusMap}
         handleStatusChange={handleStatusChange}
       />
+      <RangeSlider setRange={handleSetRange} />
       <VisualizerToolbar
         selectAllPairs={handleSelectAllPairs}
         selectAllBroadway={handleSelectAllBroadway}

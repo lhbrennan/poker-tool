@@ -1,7 +1,7 @@
 import React from 'react';
 import { styled } from 'styletron-react';
 
-const totalPossibleCombos = 1326;
+import { calcNumHandCombos, totalPossibleCombos } from '../utils';
 
 /**
  * @param {number} num
@@ -19,19 +19,6 @@ const Section = styled('section', {
   maxWidth: '700px',
   margin: '0 auto',
 });
-
-const calcNumHandCombos = (hand) => {
-  // handle pairs (6 combos)
-  if (hand.charAt(0) === hand.charAt(1)) {
-    return 6;
-  }
-  // handle suited cards (4 combos)
-  if (hand.charAt(2) === 's') {
-    return 4;
-  }
-  // handle unsuited cards (12 combos)
-  return 12;
-};
 
 const calcTotalNumSelectionCombos = (handStatusMap) =>
   Object.entries(handStatusMap).reduce(

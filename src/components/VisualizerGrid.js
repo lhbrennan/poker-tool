@@ -5,7 +5,7 @@ import { VisualizerCell } from './VisualizerCell';
 
 const Outer = styled('section', {
   maxWidth: '700px',
-  margin: '0px auto 20px auto',
+  margin: '0px auto',
 });
 
 const Middle = styled('div', {

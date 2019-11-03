@@ -19,34 +19,26 @@ export const VisualizerToolbar = ({
   resetAllHands,
 }) => (
   <Section>
-    <Button onClick={selectAllPairs} kind={KIND.secondary} size={SIZE.compact}>
+    <Button onClick={selectAllPairs} kind={KIND.primary} size={SIZE.compact}>
       All Pairs
     </Button>
-    <Button
-      onClick={selectAllBroadway}
-      kind={KIND.secondary}
-      size={SIZE.compact}
-    >
+    <Button onClick={selectAllBroadway} kind={KIND.primary} size={SIZE.compact}>
       All Broadway
     </Button>
     <Button
       onClick={selectAllSuitedConnectors}
-      kind={KIND.secondary}
+      kind={KIND.primary}
       size={SIZE.compact}
     >
       All Suited Connectors
     </Button>
-    <Button
-      onClick={selectAllSuitedAx}
-      kind={KIND.secondary}
-      size={SIZE.compact}
-    >
+    <Button onClick={selectAllSuitedAx} kind={KIND.primary} size={SIZE.compact}>
       All Suited AX
     </Button>
-    <Button onClick={selectAllHands} kind={KIND.secondary} size={SIZE.compact}>
+    <Button onClick={selectAllHands} kind={KIND.primary} size={SIZE.compact}>
       All Hands
     </Button>
-    <Button onClick={resetAllHands} kind={KIND.secondary} size={SIZE.compact}>
+    <Button onClick={resetAllHands} kind={KIND.primary} size={SIZE.compact}>
       Reset
     </Button>
   </Section>
