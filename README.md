@@ -68,7 +68,5 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
 
 ### To-do
-* implement better font for hands
 * make font-size responsive
 * add linter
-* change slider numbers to be percent, and remove decimals

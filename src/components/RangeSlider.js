@@ -7,7 +7,6 @@ import { calcNumHandCombos, totalPossibleCombos } from '../utils';
 import { sixMaxRankings } from '../constants/handRankings';
 
 const calcSliderRange = (start, end, handRankings) => {
-  console.log('handRankings', handRankings)
   let numCombos = 0;
   let startIdx = 0;
   let endIdx = null;
@@ -29,7 +28,6 @@ const calcSliderRange = (start, end, handRankings) => {
       break;
     }
   }
-  console.log('result', handRankings.slice(startIdx, endIdx + 1))
   return handRankings.slice(startIdx, endIdx + 1);
 };
 
@@ -47,6 +45,16 @@ const RangeSlider = ({ setRange }) => {
       <Slider
         value={value}
         onChange={({ value }) => value && setValue(value)}
+        step={0.5}
+        overrides={{
+          ThumbValue: {
+            style: {
+              ':after': {
+                content: '"%"',
+              },
+            },
+          },
+        }}
       />
       <div style={{ height: '60%' }}>
         <Button

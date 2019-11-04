@@ -4,7 +4,7 @@ import { styled } from 'styletron-react';
 import { VisualizerCell } from './VisualizerCell';
 
 const Outer = styled('section', {
-  maxWidth: '700px',
+  maxWidth: '650px',
   margin: '0px auto',
 });
 
@@ -22,6 +22,8 @@ const Inner = styled('div', {
   display: 'grid',
   gridTemplateColumns: 'repeat(13, minmax(30px, 1fr))',
   gridTemplateRows: 'repeat(13, minmax(30px, 1fr))',
+
+  fontFamily: 'PT Sans, sans-serif',
 
   gridColumnGap: '4px',
   gridRowGap: '4px',

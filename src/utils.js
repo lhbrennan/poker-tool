@@ -1,14 +1,33 @@
 export const totalPossibleCombos = 1326;
 
+export const HAND_TYPES = {
+  PAIR: 'pair',
+  SUITED: 'suited',
+  UNSUITED: 'unsuited',
+};
+
 export const calcNumHandCombos = (hand) => {
-  // handle pairs (6 combos)
-  if (hand.charAt(0) === hand.charAt(1)) {
+  const handType = determineHandType(hand);
+
+  if (handType === HAND_TYPES.PAIR) {
     return 6;
   }
-  // handle suited cards (4 combos)
-  if (hand.charAt(2) === 's') {
+  if (handType === HAND_TYPES.SUITED) {
     return 4;
   }
-  // handle unsuited cards (12 combos)
   return 12;
+};
+
+/**
+ * @param {string} hand
+ * @returns {'pair' | 'suited' | 'unsuited'} type of hand
+ */
+export const determineHandType = (hand) => {
+  if (hand.charAt(0) === hand.charAt(1)) {
+    return HAND_TYPES.PAIR;
+  }
+  if (hand.charAt(2) === 's') {
+    return HAND_TYPES.SUITED;
+  }
+  return HAND_TYPES.UNSUITED;
 };
