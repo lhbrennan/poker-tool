@@ -1,7 +1,7 @@
 import React from 'react';
 import { LightTheme } from 'baseui';
 
-const Header = (props: PropsT) => (
+const Header = (props) => (
   <section
     style={{
       display: 'flex',
