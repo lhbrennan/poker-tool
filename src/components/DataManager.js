@@ -99,7 +99,7 @@ export const DataManager = () => {
   };
 
   const handleSelectAllHands = () => {
-    setHandStatusMap(createHandStatusMap(hands.flat(), 'YES'));
+    setHandStatusMap(createHandStatusMap(hands, 'YES'));
   };
 
   const handleResetAllHands = () => {
@@ -111,7 +111,7 @@ export const DataManager = () => {
       ...handStatusMap,
       ...createHandStatusMap(range, 'YES'),
     });
-  }
+  };
 
   return (
     <section style={{ height: '100%' }}>

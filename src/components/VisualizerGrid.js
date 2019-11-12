@@ -45,7 +45,7 @@ export const VisualizerGrid = ({
   <Outer>
     <Middle>
       <Inner>
-        {hands.flat().map((hand) => (
+        {hands.map((hand) => (
           <VisualizerCell
             label={hand}
             status={handStatusMap[hand]}

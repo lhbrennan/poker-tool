@@ -68,5 +68,12 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
 
 ### To-do
+* write key equity functions locally:
+  * evaluator
+  * comparer
+  * board generator
+  * overall solver
+* deploy as lamda function, test endpoint via terminal
+* implement UI
 * make font-size responsive
-* add linter
+* differentiate between 'hand' AKs and 'hand' AcKc

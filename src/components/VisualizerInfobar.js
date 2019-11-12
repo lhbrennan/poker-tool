@@ -1,16 +1,11 @@
 import React from 'react';
 import { styled } from 'styletron-react';
 
-import { calcNumHandCombos, totalPossibleCombos } from '../utils';
-
-/**
- * @param {number} num
- * @param {number} precision
- */
-const roundToPrecision = (num, precision) => {
-  const adjuster = 1 / precision;
-  return Math.round(num * adjuster) / adjuster;
-};
+import {
+  roundToPrecision,
+  calcNumHandCombos,
+  totalPossibleCombos,
+} from '../utils';
 
 const Section = styled('section', {
   display: 'flex',
