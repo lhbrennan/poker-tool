@@ -81,13 +81,13 @@ function pickRandomArrayElement(array) {
 
 // available from '/.netlify/functions/calc-hand-vs-range-equity'
 exports.handler = function(event, context, callback) {
-  const { heroHand, villianRange, board, numTrials } = event.body;
-
-  const equity = calcEquityByMonteCarloSimulation(
-    heroHand,
-    villianRange,
-    board,
-    numTrials
-  );
-  callback(null, { statusCode: 200, body: `"${equity}"` });
+  // const { heroHand, villianRange, board, numTrials } = event.body;
+  // const equity = calcEquityByMonteCarloSimulation(
+  //   heroHand,
+  //   villianRange,
+  //   board,
+  //   numTrials
+  // );
+  // callback(null, { statusCode: 200, body: `"${equity}"` });
+  callback(null, 'Hello World');
 };
