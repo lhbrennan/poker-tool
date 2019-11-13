@@ -12,6 +12,7 @@ import { VisualizerToolbar } from './VisualizerToolbar';
 import { VisualizerInfobar } from './VisualizerInfobar';
 import { Header } from './Header';
 import { RangeSlider } from './RangeSlider';
+import { CruncherSection } from './CruncherSection';
 
 /****** UTILS *****/
 const setQueryStringWithoutPageReload = (queryString) => {
@@ -116,21 +117,24 @@ export const DataManager = () => {
   return (
     <section style={{ height: '100%' }}>
       <Header />
-      <VisualizerGrid
-        hands={hands}
-        handStatusMap={handStatusMap}
-        handleStatusChange={handleStatusChange}
-      />
-      <RangeSlider setRange={handleSetRange} />
-      <VisualizerToolbar
-        selectAllPairs={handleSelectAllPairs}
-        selectAllBroadway={handleSelectAllBroadway}
-        selectAllSuitedConnectors={handleSelectAllSuitedConnectors}
-        selectAllSuitedAx={handleSelectAllSuitedAx}
-        selectAllHands={handleSelectAllHands}
-        resetAllHands={handleResetAllHands}
-      />
-      <VisualizerInfobar handStatusMap={handStatusMap} />
+      <div>
+        <VisualizerGrid
+          hands={hands}
+          handStatusMap={handStatusMap}
+          handleStatusChange={handleStatusChange}
+        />
+        <RangeSlider setRange={handleSetRange} />
+        <VisualizerToolbar
+          selectAllPairs={handleSelectAllPairs}
+          selectAllBroadway={handleSelectAllBroadway}
+          selectAllSuitedConnectors={handleSelectAllSuitedConnectors}
+          selectAllSuitedAx={handleSelectAllSuitedAx}
+          selectAllHands={handleSelectAllHands}
+          resetAllHands={handleResetAllHands}
+        />
+        <VisualizerInfobar handStatusMap={handStatusMap} />
+      </div>
+      <CruncherSection />
     </section>
   );
 };
