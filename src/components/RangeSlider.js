@@ -4,7 +4,7 @@ import { Button, SIZE, KIND } from 'baseui/button';
 import { styled } from 'styletron-react';
 
 import { calcNumHandCombos, totalPossibleCombos } from '../utils';
-import { sixMaxRankings } from '../constants/handRankings';
+import { sixMaxRankings } from '../constants/startingHandRankings';
 
 const calcSliderRange = (start, end, handRankings) => {
   let numCombos = 0;

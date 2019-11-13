@@ -77,3 +77,4 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
 * implement UI
 * make font-size responsive
 * differentiate between 'hand' AKs and 'hand' AcKc
+* cmd + click on range visualizer selects everything and better
