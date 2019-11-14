@@ -1,7 +1,7 @@
-import PokerEvaluator from 'poker-evaluator';
-import { cards } from '../constants/cards';
+const PokerEvaluator = require('poker-evaluator');
+const cards = require('../constants/cards').cards;
 
-export function calcEquityByMonteCarloSimulation(
+function calcEquityByMonteCarloSimulation(
   hand, // AhJc
   range, // [[As,9h], [Kc, Ks]...]
   board, // [2d, 9d, 4s],
@@ -18,7 +18,7 @@ export function calcEquityByMonteCarloSimulation(
   return wins / numTrials;
 }
 
-export function generateRandomBoard(initialBoard, deadCards) {
+function generateRandomBoard(initialBoard, deadCards) {
   const finalBoard = [...initialBoard];
 
   const availableCards = [...cards].filter(
@@ -34,7 +34,7 @@ export function generateRandomBoard(initialBoard, deadCards) {
   return finalBoard;
 }
 
-export function calcEquityOnCompleteBoard(hand, range, board) {
+function calcEquityOnCompleteBoard(hand, range, board) {
   let wins = 0;
   let ties = 0;
 
@@ -53,7 +53,7 @@ export function calcEquityOnCompleteBoard(hand, range, board) {
   return wins / (range.length - ties);
 }
 
-export function determineIfHeroWins(heroHand, villianHand) {
+function determineIfHeroWins(heroHand, villianHand) {
   const evalHand1 = PokerEvaluator.evalHand(heroHand);
   const evalHand2 = PokerEvaluator.evalHand(villianHand);
 
@@ -79,8 +79,8 @@ function pickRandomArrayElement(array) {
 
 //----- For Netlify Serverless ----
 
-// available from '/.netlify/functions/calc-hand-vs-range-equity'
-exports.handler = function(event, context, callback) {
+// available from '/.netlify/functions/calcEquity'
+function handler(event, context, callback) {
   // const { heroHand, villianRange, board, numTrials } = event.body;
   // const equity = calcEquityByMonteCarloSimulation(
   //   heroHand,
@@ -89,5 +89,14 @@ exports.handler = function(event, context, callback) {
   //   numTrials
   // );
   // callback(null, { statusCode: 200, body: `"${equity}"` });
-  callback(null, 'Hello World');
+  callback(null, { statusCode: 200, body: 'Hello World' });
+}
+
+module.exports = {
+  calcEquityByMonteCarloSimulation,
+  generateRandomBoard,
+  calcEquityOnCompleteBoard,
+  determineIfHeroWins,
+  pickRandomArrayElement,
+  handler,
 };
