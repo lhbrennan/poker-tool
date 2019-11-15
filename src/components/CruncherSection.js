@@ -9,7 +9,7 @@ const CruncherSection = (props) => {
 
   const handleCrunchEquity = async () => {
     try {
-      const response = await fetch('/.netlify/lambda-functions/calcEquity', {
+      const response = await fetch('/.netlify/functions/calcEquity', {
         method: 'POST',
         body: JSON.stringify({
           heroHand,

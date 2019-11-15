@@ -19,7 +19,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint src"
+    "lint": "eslint src",
+    "lambda": "netlify-lambda serve src/lambdas-src"
   },
   "browserslist": {
     "production": [
@@ -35,6 +36,7 @@
   },
   "devDependencies": {
     "eslint-plugin-prettier": "^3.1.1",
+    "netlify-lambda": "^1.6.3",
     "prettier": "^1.18.2"
   }
 }
